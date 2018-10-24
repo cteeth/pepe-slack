@@ -5,6 +5,9 @@
   "repository": "https://github.com/cteeth/pepe-slack.git",
   "author": "c.molari <c.molari@cosmobile.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "hapi": "^17.6.0"
   }
