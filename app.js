@@ -29,6 +29,7 @@ server.route({
           pepe = JSON.parse(action.value)
           return {
             "response_type": "in_channel",
+            "as_user": true,
             "attachments": [
                 {
                   "title": pepe.mood,
