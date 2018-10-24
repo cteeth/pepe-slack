@@ -22,7 +22,6 @@ server.route({
   handler: function(request, h) {
     lastAction = request.payload
     return {
-      "text": "New comic book alert!",
       "attachments": [
           {
             "title": request.payload.text,
