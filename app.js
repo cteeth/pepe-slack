@@ -26,11 +26,12 @@ server.route({
           {
             "title": request.payload.text,
             "image_url": "http://i.imgur.com/dytv5Xh.png",
+            "callback_id": "pepe",
             "actions": [
                 {
                   "name": "send",
                   "text": "Send Pepe",
-                  "style": "good",
+                  "style": "primary",
                   "type": "button",
                   "value": "send"
                 },
