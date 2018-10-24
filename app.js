@@ -22,8 +22,35 @@ server.route({
   handler: function(request, h) {
     lastAction = request.payload
     return {
-      response_type: 'ephemeral',
-      text: '@cavolino gay'
+      "text": "New comic book alert!",
+      "attachments": [
+          {
+            "title": request.payload.text,
+            "image_url": "http://i.imgur.com/dytv5Xh.png",
+            "actions": [
+                {
+                  "name": "send",
+                  "text": "Send Pepe",
+                  "style": "good",
+                  "type": "button",
+                  "value": "send"
+                },
+                {
+                    "name": "change",
+                    "text": "Change Pepe",
+                    "type": "button",
+                    "value": "change"
+                },
+                {
+                    "name": "cancel",
+                    "text": "Discard Pepe",
+                    "style": "danger",
+                    "type": "button",
+                    "value": "cancel"
+                }
+            ]
+          }
+      ]
     }
   }
 })
