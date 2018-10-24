@@ -21,6 +21,10 @@ server.route({
   path: '/slack',
   handler: function(request, h) {
     lastAction = request.payload
+    return {
+      response_type: 'ephemeral',
+      text: '@cavolino gay'
+    }
   }
 })
 
