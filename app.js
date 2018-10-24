@@ -21,26 +21,55 @@ server.route({
   path: '/slack',
   handler: function(request, h) {
     lastAction = request.payload
-    return {
-      "attachments": [
-          {
-            "title": request.payload.text,
-            "image_url": "http://i.imgur.com/dytv5Xh.png",
-            "callback_id": "pepe",
-            "actions": [
+    if ('payload' in request.payload) {
+      // Answer to interactive message
+      action = JSON.parse(request.payload.payload).actions[0]
+      switch (action.name) {
+        case 'send':
+          pepe = JSON.parse(action.value)
+          return {
+            "response_type": "in_channel",
+            "attachments": [
+                {
+                  "title": pepe.mood,
+                  "image_url": pepe.image,
+                }
+            ],
+            "delete_original": true
+          }
+        default:
+          return {
+            "delete_original": true
+          }
+      }
+    } else {
+      // New message
+      return {
+        "attachments": [
+            {
+              "title": request.payload.text,
+              "image_url": "http://i.imgur.com/dytv5Xh.png",
+              "callback_id": "pepe",
+              "actions": [
                 {
                   "name": "send",
                   "text": "Send Pepe",
                   "style": "primary",
                   "type": "button",
-                  "value": "send"
-                },
+                  "value": JSON.stringify({
+                    "mood": request.payload.text,
+                    "image": "http://i.imgur.com/dytv5Xh.png"
+                  })
+                }, /*
                 {
                     "name": "change",
                     "text": "Change Pepe",
                     "type": "button",
-                    "value": "change"
-                },
+                    "value": JSON.stringify({
+                      "mood": request.payload.text,
+                      "image": "http://i.imgur.com/dytv5Xh.png"
+                    })
+                }, */
                 {
                     "name": "cancel",
                     "text": "Discard Pepe",
@@ -48,9 +77,10 @@ server.route({
                     "type": "button",
                     "value": "cancel"
                 }
-            ]
-          }
-      ]
+              ]
+            }
+        ]
+      }
     }
   }
 })
