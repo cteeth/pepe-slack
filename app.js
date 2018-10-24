@@ -3,7 +3,7 @@ const Hapi = require('hapi')
 // Create a server with a host and port
 const server = Hapi.server({
   host: 'pepe-slack.herokuapp.com',
-  port: 80
+  port: process.env.PORT || 8080
 })
 
 // Add the route
