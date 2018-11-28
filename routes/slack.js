@@ -1,13 +1,21 @@
-const serviceHandler = require('../common/servicesHandler')
+const sh = require('../common/servicesHandler')
 module.exports = {
   async register (server, options) {
     server.route({
       method: 'POST',
-      path: '/slack',
+      path: '/',
       handler: function (request, h) {
         const { payload } = request
-        const { slack } = serviceHandler
+        const { slack } = sh
         return slack.process(payload)
+      }
+    })
+
+    server.route({
+      method: 'GET',
+      path: '/',
+      handler: function (request, h) {
+        return 'online'
       }
     })
   }

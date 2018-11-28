@@ -1,17 +1,17 @@
 const Hapi = require('hapi')
-const servicesHandler = require('./common/servicesHandler')
-const loadRoutes = require('routes')
+const sh = require('./common/servicesHandler')
+const loadRoutes = require('./routes')
 // Create a server with a host and port
 const server = Hapi.server({
-  port: process.env.PORT
+  host: '0.0.0.0',
+  port: process.env.PORT || 3001
 })
 
 // Start the server
 async function start () {
   try {
-    await servicesHandler.loadServices()
-    let routes = await loadRoutes()
-    await server.register(routes)
+    await sh.loadServices()
+    await server.register(await loadRoutes())
     await server.start()
   } catch (err) {
     console.log(err)

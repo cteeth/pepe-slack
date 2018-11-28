@@ -1,8 +1,13 @@
-const servicesHandler = require('./serviceHandler')
+const servicesHandler = require('./servicesHandler')
 
 module.exports = class Service {
-  constructor () {
-    this.name = this.constructor.name
-    servicesHandler[this.name] = this
+  constructor (name) {
+    this.name = name
+  }
+
+  get services () {
+    let sh = { ...servicesHandler }
+    delete sh.loadServices
+    return sh
   }
 }
