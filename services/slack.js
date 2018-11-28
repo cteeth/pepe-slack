@@ -1,5 +1,6 @@
+const Service = require('../common/Service')
 
-module.exports = class SlackService {
+module.exports = class SlackService extends Service {
   async process (payload) {
     if (payload[payload] !== undefined) {
       // Answer to interactive message
