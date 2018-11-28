@@ -1,11 +1,13 @@
 const servicesHandler = {
   async loadServices () {
-    let servicesClasses = await require('../services')
-    for (let ServiceClass of servicesClasses) {
-      let service = new ServiceClass()
+    let services = await require('../services')()
+    for (let service of services) {
+      console.log('loading service ' + service.name)
       if (service.init) {
         await service.init()
       }
+      console.log('loading service ' + service.name + ' done')
+      this[service.name] = service
     }
   }
 }
