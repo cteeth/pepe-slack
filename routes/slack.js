@@ -8,6 +8,7 @@ module.exports = function register (server, options) {
     handler: async function (request, h) {
       const { payload } = request
       const { slack } = sh
+
       lastAction = {
         request,
         payload
@@ -36,7 +37,9 @@ module.exports = function register (server, options) {
     method: 'GET',
     path: '/errors',
     handler: function (request, h) {
-      return lastError
+      return {
+        lastError
+      }
     }
   })
 }
