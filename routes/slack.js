@@ -10,11 +10,12 @@ module.exports = function register (server, options) {
       const { slack } = sh
 
       lastAction = {
-        request,
         payload
       }
+
       try {
         let response = await slack.process(payload)
+        lastAction.response = response
         return response
       } catch (e) {
         lastError = e
