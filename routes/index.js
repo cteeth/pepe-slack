@@ -8,11 +8,14 @@ module.exports = async function loadRoutes () {
   for (let file of files) {
     let name = pattern.exec(file)[1]
     if (name && file !== 'index.js') {
-      let route = require(join(__dirname, file))
+      let register = require(join(__dirname, file))
       let plugin = {
         plugin: {
           name,
-          ...route
+          register
+        },
+        routes: {
+          prefix: '/' + name
         },
         options: {
           routes: {

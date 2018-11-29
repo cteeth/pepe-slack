@@ -1,7 +1,6 @@
 const sh = require('../common/servicesHandler')
 let lastAction = {}
-module.exports = {
-  async register (server, options) {
+module.exports = function register (server, options) {
     server.route({
       method: 'POST',
       path: '/',
@@ -21,8 +20,12 @@ module.exports = {
       method: 'GET',
       path: '/',
       handler: function (request, h) {
-        return lastAction
+        return {
+          plugins: server.plugins,
+          registrations: server.registrations,
+          lastAction
+        } 
       }
     })
   }
-}
+

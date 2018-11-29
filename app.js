@@ -11,7 +11,9 @@ const server = Hapi.server({
 async function start () {
   try {
     await sh.loadServices()
-    await server.register(await loadRoutes())
+    let routes = await loadRoutes()
+    await server.register(routes)
+    await server.initialize()
     await server.start()
   } catch (err) {
     console.log(err)
