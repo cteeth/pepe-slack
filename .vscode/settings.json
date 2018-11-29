@@ -1,5 +1,4 @@
 {
-    "javascript.format.enable": false,
     "standard.enable": true,
     "standard.autoFixOnSave": true,
     "editor.tabSize": 2
