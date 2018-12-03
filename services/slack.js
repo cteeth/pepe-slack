@@ -85,7 +85,7 @@ module.exports = class SlackService extends Service {
     return msg
   }
 
-  async random () {
+  random () {
     return 'http://i.imgur.com/dytv5Xh.png'
   }
 }
