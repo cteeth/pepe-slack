@@ -26,7 +26,7 @@ module.exports = class SlackService extends Service {
           pepe = JSON.parse(action.value)
           let newImage = pepe.image
           while (pepe.image !== newImage) {
-            newImage = this.random()
+            newImage = this.image(pepe.mood)
           }
           return this.interactive(text, newImage, true)
         default:
@@ -36,7 +36,7 @@ module.exports = class SlackService extends Service {
       }
     } else {
       // New message
-      return this.interactive(text, this.random())
+      return this.interactive(text, this.image(pepe.mood))
     }
   }
 
@@ -85,7 +85,7 @@ module.exports = class SlackService extends Service {
     return msg
   }
 
-  random () {
-    return 'http://i.imgur.com/dytv5Xh.png'
+  image (mood) {
+    return 'https://pepe-slack.herokuapp.com/pepe/' + mood
   }
 }
