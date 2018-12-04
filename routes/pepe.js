@@ -3,8 +3,7 @@ const fs = require('fs').promises
 let lastAction = {}
 let lastError
 module.exports = function register (server, options) {
-
-  await server.register(require('inert'));
+  require('inert')
 
   server.route({
     method: 'GET',
