@@ -10,8 +10,11 @@ module.exports = function register (server, options) {
     path: '/{mood}',
     handler: function (request, h) {
       console.log(request.params.mood)
-      let files = await fs.readdir(__dirname + '/../assets/pepes')
+      const path = __dirname + '/../assets/pepes'
+      console.log(path)
+      let files = await fs.readdir(path)
       for (let filename of files) {
+        console.log(filename)
         return h.file('../assets/pepes/' + filename)
       }
     }
