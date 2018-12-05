@@ -8,7 +8,7 @@ module.exports = function register (server, options) {
       console.log(request.params.mood)
       const { pepe } = sh
       let pepesPaths = await pepe.giveMePepes()
-
+      console.log(pepesPaths)
       return pepesPaths && pepesPaths.length && h.file(pepesPaths[0])
     }
   })
