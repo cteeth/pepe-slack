@@ -9,7 +9,7 @@ module.exports = function register (server, options) {
       const { pepe } = sh
       let pepesPaths = await pepe.giveMePepes()
 
-      return pepesPaths && pepesPaths.lenght && h.file(pepesPaths[0])
+      return pepesPaths && pepesPaths.length && h.file(pepesPaths[0])
     }
   })
 }
