@@ -36,7 +36,7 @@ module.exports = class SlackService extends Service {
       }
     } else {
       // New message
-      return this.interactive(text, this.image(pepe.mood))
+      return this.interactive(text, this.image(payload.text))
     }
   }
 
