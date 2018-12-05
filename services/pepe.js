@@ -12,7 +12,7 @@ module.exports = class SlackService extends Service {
     console.log(path)
     let files = await readdir(path)
     files = files.map(filename => {
-      return join('../assets/pepes/', filename)
+      return join(path, filename)
     })
     return files
   }
