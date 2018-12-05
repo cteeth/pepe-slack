@@ -5,11 +5,10 @@ module.exports = function register (server, options) {
     method: 'GET',
     path: '/{mood}',
     handler: async function (request, h) {
-      console.log(request.params.mood)
       const { pepe } = sh
-      let pepesPaths = await pepe.giveMePepes()
-      console.log(pepesPaths)
-      return pepesPaths && pepesPaths.length && h.file(pepesPaths[0])
+      let chosenPepe = await pepe.giveMePepe(request.params.mood)
+      console.log(chosenPepe)
+      return h.file(chosenPepe)
     }
   })
 }
