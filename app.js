@@ -10,6 +10,7 @@ const server = Hapi.server({
 // Start the server
 async function start () {
   try {
+    await server.register(require('inert'));
     await sh.loadServices()
     let routes = await loadRoutes()
     await server.register(routes)

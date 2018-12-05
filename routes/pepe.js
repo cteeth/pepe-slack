@@ -7,7 +7,6 @@ module.exports = function register (server, options) {
     method: 'GET',
     path: '/{mood}',
     handler: async function (request, h) {
-      await server.register(require('inert'));
       console.log(request.params.mood)
       const path = __dirname + '/../assets/pepes'
       console.log(path)
