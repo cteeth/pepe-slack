@@ -4,10 +4,10 @@ const fs = require('fs').promises
 module.exports = class SlackService extends Service {
   async process (body) {
     let { payload, text } = body
+    let pepe
     if (payload !== undefined) {
       // Answer to interactive message
       let action = JSON.parse(payload).actions[0]
-      let pepe
       switch (action.name) {
         case 'send':
           pepe = JSON.parse(action.value)
