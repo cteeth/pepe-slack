@@ -26,7 +26,7 @@ module.exports = class SlackService extends Service {
         case 'change':
           pepe = JSON.parse(action.value)
           let newImage = pepe.image
-          while (pepe.image !== newImage) {
+          while (pepe.image === newImage) {
             newImage = this.image(pepe.mood)
           }
           return this.interactive(pepe.mood, newImage, true)
