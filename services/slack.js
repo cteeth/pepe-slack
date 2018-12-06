@@ -1,5 +1,6 @@
 const Service = require('../common/Service')
 const fs = require('fs').promises
+const uuidv4 = require('uuid/v4');
 
 module.exports = class SlackService extends Service {
   async process (body) {
@@ -86,6 +87,6 @@ module.exports = class SlackService extends Service {
   }
 
   image (mood) {
-    return `https://pepe-slack.herokuapp.com/pepe/${encodeURI(mood)}/${Math.random().toString(36).substring(15)}`
+    return `https://pepe-slack.herokuapp.com/pepe/${encodeURI(mood)}/${uuidv4()}`
   }
 }
