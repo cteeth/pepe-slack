@@ -86,6 +86,6 @@ module.exports = class SlackService extends Service {
   }
 
   image (mood) {
-    return 'https://pepe-slack.herokuapp.com/pepe/' + mood
+    return 'https://pepe-slack.herokuapp.com/pepe/' + mood.split(' ').join('_')
   }
 }
