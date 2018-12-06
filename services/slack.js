@@ -29,7 +29,7 @@ module.exports = class SlackService extends Service {
           while (pepe.image !== newImage) {
             newImage = this.image(pepe.mood)
           }
-          return this.interactive(text, newImage, true)
+          return this.interactive(pepe.mood, newImage, true)
         default:
           return {
             delete_original: true
