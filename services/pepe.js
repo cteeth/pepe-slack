@@ -9,6 +9,7 @@ module.exports = class SlackService extends Service {
     let pepesPaths = await this.giveMePepes()
     if (filename !== undefined) {
       for (let pepe in pepesPaths) {
+        console.log(`pepePath: ${pepe}`)
         if (pepe.includes(filename)){
           console.log('Filename found!')
           return pepe
