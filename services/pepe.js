@@ -4,19 +4,14 @@ const { readdir } = require('fs').promises
 
 module.exports = class SlackService extends Service {
   async giveMePepe (filename) {
-    filename = decodeURI(filename)
-    console.log(`filename: ${filename}`)
     let pepesPaths = await this.giveMePepes()
     if (filename !== undefined) {
       for (let pepe of pepesPaths) {
-        console.log(`pepePath: ${pepe}`)
         if (pepe.includes(filename)){
-          console.log('Filename found!')
           return pepe
         }
       }
     }
-    console.log('Filename not found!')
     return pepesPaths && pepesPaths.length && pepesPaths[Math.floor(Math.random() * pepesPaths.length)]
   }
 
