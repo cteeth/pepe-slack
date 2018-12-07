@@ -26,7 +26,7 @@ module.exports = class SlackService extends Service {
           pepe = JSON.parse(action.value)
           let newImage = pepe.image
           while (pepe.image === newImage) {
-            newImage = this.image(pepe.mood)
+            newImage = await this.image(pepe.mood)
           }
           return this.interactive(pepe.mood, newImage, true)
         default:
@@ -36,7 +36,7 @@ module.exports = class SlackService extends Service {
       }
     } else {
       // New message
-      return this.interactive(text, this.image(text))
+      return this.interactive(text, await this.image(text))
     }
   }
 
@@ -85,7 +85,7 @@ module.exports = class SlackService extends Service {
     return msg
   }
 
-  image (mood) {
+  async image (mood) {
     const path = join(__dirname, '/../assets/pepes')
     let files = await readdir(path)
     let filename = files[Math.floor(Math.random() * files.length)]
