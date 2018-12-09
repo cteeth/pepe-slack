@@ -11,10 +11,10 @@ module.exports = class SlackService extends Service {
       let action = JSON.parse(payload).actions[0]
       switch (action.name) {
         case 'send':
-          console.log(payload)
-          console.log(JSON.parse(payload))
+          let user = JSON.parse(payload).user
           pepe = JSON.parse(action.value)
           return {
+            text: `from <@${user.id}>`,
             response_type: 'in_channel',
             as_user: true,
             attachments: [
